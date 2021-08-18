@@ -8,13 +8,17 @@ export default function TextForm(props) {
 
     const handleUpClick = () => {
         setText(text.toUpperCase());
+        text && props.showAlert("Converted to Uppercase", "success");
    }
     const handleLoClick = () => {
         setText(text.toLowerCase());
+        text && props.showAlert("Converted to Lowercase", "success");
+
     }
 
     const handleClearClick = () => {
         setText("");
+        text && props.showAlert("Text is Cleared", "success");
     }
 
     const handleVowelsClick = () => {
@@ -23,8 +27,11 @@ export default function TextForm(props) {
             if (char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u')
                 count++;
         }
-
+        if (count === 0)
+            return;
         setText(`Total vowels in '${text}' are ${count}`);
+        text && props.showAlert("Counted the Vowels", "success");
+
     }
 
     const handleOnChange = (e) => {
@@ -35,11 +42,14 @@ export default function TextForm(props) {
         let text = document.getElementById("myBox");
         text.select();
         navigator.clipboard.writeText(text.value);
+        text && props.showAlert("Copied to Clipboard", "success");
     }
 
     const handleExtraSpaces = () => {
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
+        text && props.showAlert("Extra spaces Removed", "success");
+
     }
     
     return (
