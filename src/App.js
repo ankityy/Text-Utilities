@@ -12,7 +12,7 @@ import {
 
 function App() {
   const [mode, setMode] = useState("light");  //enable or disable dark mode
-  const [alert, setAlert] = useState(null);  //to set alert msg
+  const [alert, setAlert] = useState(null);  //to set alert msg ---alert is an object here. it has two values msg and type 
 
   const showAlert = (message, type)=>{
     setAlert({
